@@ -12,6 +12,13 @@ require('./bootstrap');
 class App extends React.Component {
     constructor (props) {
         super(props)
+        this.state = {
+            auth: []
+        }
+    }
+
+    componentDidMount() {
+        this.setState({auth: []})
     }
 
     seeUrl() {
@@ -24,7 +31,7 @@ class App extends React.Component {
     render() {
         return(
             <div>
-                {this.seeUrl() === 'admin' ? <MainAdmin /> : <MainUser />}
+                {this.seeUrl() === 'admin' && this.state.auth.length >= 1 ? <MainAdmin /> : <MainUser />}
 
             </div>
         )
